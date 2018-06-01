@@ -14,7 +14,7 @@ import java.util.Observer;
  * @see ISquare
  * @see IPawn
  */
-public interface IBoard {
+public interface IBoardFrame {
 
     /**
      * Adds the square.

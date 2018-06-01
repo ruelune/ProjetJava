@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Example;
+import model.MovableImpl;
 
 /**
  * <h1>The Class ExampleDAO.</h1>
@@ -14,10 +15,10 @@ import model.Example;
  * @author Jean-Aymeric DIET jadiet@cesi.fr
  * @version 1.0
  */
-public abstract class ExampleDAO extends AbstractDAO {
+public abstract class MovableImplDAO extends AbstractDAO {
 
     /** The sql example by id. */
-    private static String sqlExampleById   = "{call findExampleById(?)}";
+    private static String sqlLevelByNumber   = "{call findLevelByNumber(?)}";
 
     /** The sql example by name. */
     private static String sqlExampleByName = "{call findExampleByName(?)}";
@@ -40,14 +41,14 @@ public abstract class ExampleDAO extends AbstractDAO {
      * @throws SQLException
      *             the SQL exception
      */
-    public static Example getExampleById(final int id) throws SQLException {
-        final CallableStatement callStatement = prepareCall(sqlExampleById);
-        Example example = null;
-        callStatement.setInt(1, id);
+    public static MovableImpl getLevelByNumber(final int Level) throws SQLException {
+        final CallableStatement callStatement = prepareCall(sqlLevelByNumber);
+        MovableImpl example = null;
+        callStatement.setInt(1, Level);
         if (callStatement.execute()) {
             final ResultSet result = callStatement.getResultSet();
             if (result.first()) {
-                example = new Example(result.getInt(idColumnIndex), result.getString(nameColumnIndex));
+                example = new MovableImpl(result.getInt(idColumnIndex), result.getInt(Level), Level, result.getString(nameColumnIndex));
             }
             result.close();
         }
@@ -63,15 +64,15 @@ public abstract class ExampleDAO extends AbstractDAO {
      * @throws SQLException
      *             the SQL exception
      */
-    public static Example getExampleByName(final String name) throws SQLException {
+    public static MovableImpl getExampleByName(final String name) throws SQLException {
         final CallableStatement callStatement = prepareCall(sqlExampleByName);
-        Example example = null;
+        MovableImpl example = null;
 
         callStatement.setString(1, name);
         if (callStatement.execute()) {
             final ResultSet result = callStatement.getResultSet();
             if (result.first()) {
-                example = new Example(result.getInt(idColumnIndex), result.getString(nameColumnIndex));
+                example = new MovableImpl(result.getInt(idColumnIndex), idColumnIndex, idColumnIndex, result.getString(nameColumnIndex));
             }
             result.close();
         }
@@ -85,14 +86,14 @@ public abstract class ExampleDAO extends AbstractDAO {
      * @throws SQLException
      *             the SQL exception
      */
-    public static List<Example> getAllExamples() throws SQLException {
-        final ArrayList<Example> examples = new ArrayList<Example>();
+    public static List<MovableImpl> getAllExamples() throws SQLException {
+        final ArrayList<MovableImpl> examples = new ArrayList<MovableImpl>();
         final CallableStatement callStatement = prepareCall(sqlAllExamples);
         if (callStatement.execute()) {
             final ResultSet result = callStatement.getResultSet();
 
             for (boolean isResultLeft = result.first(); isResultLeft; isResultLeft = result.next()) {
-                examples.add(new Example(result.getInt(idColumnIndex), result.getString(nameColumnIndex)));
+                examples.add(new MovableImpl(result.getInt(idColumnIndex), idColumnIndex, idColumnIndex, result.getString(nameColumnIndex)));
             }
             result.close();
         }

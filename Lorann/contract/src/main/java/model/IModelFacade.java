@@ -9,7 +9,7 @@ import java.util.List;
  * @author Jean-Aymeric DIET jadiet@cesi.fr
  * @version 1.0
  */
-public interface IModel {
+public interface IModelFacade {
 
     /**
      * Gets the example by id.
@@ -20,7 +20,7 @@ public interface IModel {
      * @throws SQLException
      *             the SQL exception
      */
-    Example getExampleById(int id) throws SQLException;
+    MovableImpl getElementByNumberAndPosition(int Level, int Pos_X, int Pos_Y) throws SQLException;
 
     /**
      * Gets the example by name.
@@ -31,7 +31,7 @@ public interface IModel {
      * @throws SQLException
      *             the SQL exception
      */
-    Example getExampleByName(String name) throws SQLException;
+    MovableImpl getExampleByName(String name) throws SQLException;
 
     /**
      * Gets the all examples.
@@ -40,5 +40,5 @@ public interface IModel {
      * @throws SQLException
      *             the SQL exception
      */
-    List<Example> getAllExamples() throws SQLException;
+    List<MovableImpl> getAllExamples() throws SQLException;
 }

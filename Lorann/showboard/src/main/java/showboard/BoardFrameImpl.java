@@ -2,6 +2,7 @@ package showboard;
 
 import java.awt.Dimension;
 import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
 import java.util.Observer;
 
 import javax.swing.JFrame;
@@ -25,7 +26,7 @@ import javax.swing.JFrame;
  * @see ISquare
  * @see IPawn
  */
-public class BoardFrame extends JFrame implements IBoard {
+public class BoardFrameImpl extends JFrame implements IBoardFrame {
 
     /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -6563585351564617603L;
@@ -44,7 +45,7 @@ public class BoardFrame extends JFrame implements IBoard {
      * @param decorated
      *            the decorated
      */
-    public BoardFrame(final String title, final Boolean decorated) {
+    public BoardFrameImpl(final String title, final Boolean decorated) {
         super();
         this.setTitle(title);
         this.setSize(defaultFrameSize, defaultFrameSize);
@@ -63,14 +64,14 @@ public class BoardFrame extends JFrame implements IBoard {
      * @param title
      *            the title
      */
-    public BoardFrame(final String title) {
+    public BoardFrameImpl(final String title) {
         this(title, false);
     }
 
     /**
      * Instantiates a new board frame.
      */
-    public BoardFrame() {
+    public BoardFrameImpl() {
         this("", false);
     }
 
@@ -80,7 +81,7 @@ public class BoardFrame extends JFrame implements IBoard {
      * @param decorated
      *            the decorated
      */
-    public BoardFrame(final Boolean decorated) {
+    public BoardFrameImpl(final Boolean decorated) {
         this("", decorated);
     }
 
@@ -192,5 +193,17 @@ public class BoardFrame extends JFrame implements IBoard {
      */
     public final void setHeightLooped(final Boolean heightLooped) {
         this.getBoardPanel().setHeightLooped(heightLooped);
+    }
+    
+    public void keyPressed(KeyEvent keyEvent) {
+    	
+    }
+    
+    public void keyReleased(KeyEvent keyEvent) {
+    	
+    }
+    
+    public void keyTyped(KeyEvent keyEvent) {
+    	
     }
 }
