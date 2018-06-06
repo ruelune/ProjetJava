@@ -1,0 +1,110 @@
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JFrame;
+import test2.ImagePanel;
+ 
+public class Fenetre extends JFrame {
+
+	static int pos_x;
+    static int pos_y;
+public Fenetre(){
+   
+	this.setTitle("Lorann");
+	this.setSize(660, 440);
+	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	this.setLocationRelativeTo(null);
+	this.setLayout(new GridLayout(12, 19));
+	this.setLayout(new FlowLayout());
+	this.setVisible(true);
+             
+
+try {
+            
+        String url = "jdbc:mysql://localhost/projetjava?useSSL=false&serverTimezone=UTC";
+        String user = "root";
+        String passwd = "";
+
+        Connection conn = DriverManager.getConnection(url, user, passwd);
+        Statement state = conn.createStatement();
+
+        String query = "SELECT Level,ID,Object,x,y FROM table1 WHERE Level = 5 ORDER BY ID";
+    
+
+        ResultSet result = state.executeQuery(query);
+        String sprite = "";
+        
+        
+        
+        while(result.next()){            
+         
+        	sprite = result.getString("Object");
+        	pos_x = result.getInt("x");
+            pos_y = result.getInt("y");
+                   
+          if(sprite.equals("bone")) {
+          	this.setContentPane(new ImagePanel(1));
+          	this.setVisible(true);
+             
+          }
+          if(sprite.equals("vertical_bone")) {
+          	this.setContentPane(new ImagePanel(2));       	
+              this.setVisible(true);
+          }
+          if(sprite.equals("horizontal_bone")) {
+          	this.setContentPane(new ImagePanel(3));
+              this.setVisible(true);
+          }
+          if(sprite.equals("black")) {
+          	this.setContentPane(new ImagePanel(4));
+              this.setVisible(true);
+          } 
+          if(sprite.equals("monster_1")) {
+          	this.setContentPane(new ImagePanel(5));
+              this.setVisible(true);
+          }
+          if(sprite.equals("monster_2")) {
+          	this.setContentPane(new ImagePanel(6));
+              this.setVisible(true);
+          }
+          if(sprite.equals("monster_3")) {
+          	this.setContentPane(new ImagePanel(7));
+              this.setVisible(true);
+          }
+          if(sprite.equals("monster_4")) {
+          	this.setContentPane(new ImagePanel(8));
+              this.setVisible(true);
+          }
+          if(sprite.equals("crystal_ball")) {
+          	this.setContentPane(new ImagePanel(9));
+              this.setVisible(true);
+          }
+          if(sprite.equals("gate_closed")) {
+          	this.setContentPane(new ImagePanel(10));
+              this.setVisible(true);
+          }
+          if (sprite.equals("purse")) {
+          	this.setContentPane(new ImagePanel(11));
+              this.setVisible(true);
+          }
+          if (sprite.equals("lorann_l")) {
+            	this.setContentPane(new ImagePanel(12));
+                this.setVisible(true);
+            }
+          
+            System.out.println(result.getString("Object"));
+           
+          }
+ 
+        result.close();
+        state.close();
+
+      } catch (Exception e) {
+        e.printStackTrace();
+      }          
+	}
+
+}

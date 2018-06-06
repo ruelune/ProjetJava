@@ -1,0 +1,114 @@
+import java.awt.Graphics;
+import java.awt.Image;
+
+
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+
+public class ImagePanel extends JPanel{
+	
+
+	public int x = Fenetre.pos_x;
+	public int y = Fenetre.pos_y;
+	protected Image image;
+
+    protected void loadImage(String imageName) {
+
+
+        ImageIcon ii = new ImageIcon(imageName);
+        image = ii.getImage();
+    }
+    
+
+
+public ImagePanel(int img) {
+	
+	
+	
+	switch(img) {
+	
+	case(1) :
+		loadImage("C:\\Users\\romain\\Desktop\\projet\\projet 5\\sprite\\bone.png");
+		drawImage(image, x, y, this);
+	break;
+	
+	case(2) :
+		loadImage("C:\\Users\\romain\\Desktop\\projet\\projet 5\\sprite\\vertical_bone.png");
+		drawImage(image, x, y, this);
+	break;
+	
+	case(3) :
+		loadImage("C:\\Users\\romain\\Desktop\\projet\\projet 5\\sprite\\horizontal_bone.png");
+		drawImage(image, x, y, this);
+	break;
+	
+	case(4) :
+		loadImage("C:\\Users\\romain\\Desktop\\projet\\projet 5\\sprite\\black.png");
+		drawImage(image, x, y, this);
+	break;
+	
+	case(5) :
+		loadImage("C:\\Users\\romain\\Desktop\\projet\\projet 5\\sprite\\monster_1.png");
+		drawImage(image, x, y, this);
+	break;
+	
+	case(6) :
+		loadImage("C:\\Users\\romain\\Desktop\\projet\\projet 5\\sprite\\monster_2.png");
+		drawImage(image, x, y, this);
+	break;
+	
+	case(7) :
+		loadImage("C:\\Users\\romain\\Desktop\\projet\\projet 5\\sprite\\monster_3.png");
+		drawImage(image, x, y, this);
+	break;
+	
+	case(8) :
+		loadImage("C:\\Users\\romain\\Desktop\\projet\\projet 5\\sprite\\monster_4.png");
+		drawImage(image, x, y, this);
+	break;
+	
+	case(9) :
+		loadImage("C:\\Users\\romain\\Desktop\\projet\\projet 5\\sprite\\crystal_ball.png");
+		drawImage(image, x, y, this);
+	break;
+	
+	case(10) : 
+		loadImage("C:\\Users\\romain\\Desktop\\projet\\projet 5\\sprite\\gate_closed.png");
+		drawImage(image, x, y, this);
+	break;
+	
+	case(11) :
+		loadImage("C:\\Users\\romain\\Desktop\\projet\\projet 5\\sprite\\purse.png");
+		drawImage(image, x, y, this);
+	break;
+	
+	case(12) :
+		loadImage("C:\\Users\\romain\\Desktop\\projet\\projet 5\\sprite\\lorann_l.png");
+		drawImage(image, x, y, this);
+	break;
+	}
+
+
+}
+
+private void drawImage(Image image, int x, int y, ImagePanel imagePanel) {
+	
+	
+}
+
+@Override
+	public void paintComponent(Graphics g) {
+	
+	try {
+		
+		g.drawImage(image, x, y, this);
+		
+	} catch (Exception e) {
+        e.printStackTrace();
+	
+	}
+	
+}
+}
+		
+	
